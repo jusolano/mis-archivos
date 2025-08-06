@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusolano <jusolano@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: juansolano <juansolano@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 14:53:35 by jusolano          #+#    #+#             */
-/*   Updated: 2025/08/06 15:31:22 by jusolano         ###   ########.fr       */
+/*   Updated: 2025/08/06 20:35:33 by juansolano       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,44 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
+int base_correta(char *base)
+{
+	int j;
+	int k;
+
+	j = 0;
+	if (ft_strlen(base) < 2)
+		return (0);
+	while (base[j])
+	{
+		k = j + 1;
+		if (base[j] == '+' || base[j] == '-')
+			return (0);
+		while (base[k])
+		{
+			if (base[k] == base[j])
+				return (0);
+			k++;
+		}
+		j++;
+	}
+	return (1);
+}
+
 void	ft_putnbr_base(int nbr, char *base)
 {
 	int	size_base;
-	int n;
+	long n;
 	int	i;
-	char result[100];
+	char result[32];
 
+	if (!base_correta(base))
+		return;
+	if (nbr == 0)
+	{
+		write(1, &base[0], 1);
+		return;
+	}
 	size_base = ft_strlen(base);
 	n = nbr;
 	i = 0;
@@ -47,10 +78,9 @@ void	ft_putnbr_base(int nbr, char *base)
 		n = n / size_base;
 		i++;
 	}
-	while (i >= 0)
+	while (--i >= 0)
 	{
 		write(1, &result[i], 1);
-		i--;
 	}
 }
 
