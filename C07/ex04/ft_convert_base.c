@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusolano <jusolano@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: juansolano <juansolano@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 10:01:08 by jusolano          #+#    #+#             */
-/*   Updated: 2025/08/12 10:39:43 by jusolano         ###   ########.fr       */
+/*   Updated: 2025/08/12 19:00:12 by juansolano       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
+//#include <stdio.h>
 
 void	ft_putnbr_base(int nbr, char *base, char *resultado);
 int	required_size(int nbr, char *base);
@@ -84,8 +84,6 @@ int	ft_atoi_base(char *str, char *base)
 	sign = 1;
 	i = pos_1st_num(str, &sign);
 	num_final = 0;
-	if (!base_correta(base))
-		return (0);
 	pos_base = position(str[i], base);
 	while (pos_base != -1)
 	{
@@ -115,10 +113,10 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	return (n_basenova);
 }
 
-int main()
+/*int main()
 {
 	char *bin = "01";
 	char *hexa = "0123456789ABCDEF";
-	char *num = "1010";
+	char *num = "-11111111";
 	printf("El resultado es: %s", ft_convert_base(num, bin, hexa));
-}
+}*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusolano <jusolano@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: juansolano <juansolano@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 10:01:17 by jusolano          #+#    #+#             */
-/*   Updated: 2025/08/12 10:39:14 by jusolano         ###   ########.fr       */
+/*   Updated: 2025/08/12 19:03:34 by juansolano       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	required_size(int nbr, char *base)
 	long	n;
 	int		size;
 
-	i = 0;
+	i = 1;
 	n = nbr;
 	size = ft_strlen(base);
 	if (n < 0)
@@ -52,7 +52,6 @@ int	required_size(int nbr, char *base)
 void	ft_putnbr_base(int nbr, char *base, char *resultado)
 {
 	int		size_base;
-	int		i;
 	int		last_digit;
 	long	n;
 
@@ -64,12 +63,10 @@ void	ft_putnbr_base(int nbr, char *base, char *resultado)
 	}
 	size_base = ft_strlen(base);
 	n = nbr;
-	i = 0;
 	if (n < 0)
 	{
 		resultado[0] = '-';
-		nbr *= -1;
-		i++;
+		n *= -1;
 	}
 	while (n > 0)
 	{
