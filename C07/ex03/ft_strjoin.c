@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusolano <jusolano@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: juansolano <juansolano@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 08:40:18 by jusolano          #+#    #+#             */
-/*   Updated: 2025/08/12 09:57:55 by jusolano         ###   ########.fr       */
+/*   Updated: 2025/08/14 12:07:23 by juansolano       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,14 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	int		lenght;
 	char	*str_final;
 
+	if (size == 0)
+	{
+		str_final = (char *)malloc(sizeof(char));
+		if (str_final == NULL)
+			return (NULL);
+		str_final[0] = '\0';
+		return (str_final);
+	}
 	lenght = ft_total_len(size, strs, sep);
 	str_final = (char *)malloc(sizeof(char) * (lenght + 1));
 	if (str_final == NULL)
