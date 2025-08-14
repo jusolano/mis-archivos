@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_show_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusolano <jusolano@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: juansolano <juansolano@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 14:08:26 by jusolano          #+#    #+#             */
-/*   Updated: 2025/08/13 14:54:26 by jusolano         ###   ########.fr       */
+/*   Updated: 2025/08/14 12:42:32 by juansolano       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	ft_putstr(char *str)
 		write(1, str, 1);
 		str++;
 	}
-	write(1, "\n", 1);
 }
 
 void	ft_putnbr(int nb)
@@ -43,7 +42,6 @@ void	ft_putnbr(int nb)
 	}
 	c = '0' + (nb % 10);
 	write(1, &c, 1);
-	write(1, "\n", 1);
 }
 
 void	ft_show_tab(struct s_stock_str *par)
@@ -54,8 +52,11 @@ void	ft_show_tab(struct s_stock_str *par)
 	while (par[i].str != NULL)
 	{
 		ft_putstr(par[i].str);
+		write(1, "\n", 1);
 		ft_putnbr(par[i].size);
+		write(1, "\n", 1);
 		ft_putstr(par[i].copy);
+		write(1, "\n", 1);
 		i++;
 	}
 }

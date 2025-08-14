@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strs_to_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusolano <jusolano@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: juansolano <juansolano@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 12:44:12 by jusolano          #+#    #+#             */
-/*   Updated: 2025/08/13 14:25:26 by jusolano         ###   ########.fr       */
+/*   Updated: 2025/08/14 12:50:22 by juansolano       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,23 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strcpy(char *dest, char *src)
+char	*ft_strdup(char *src)
 {
-	int	i;
+	char	*dest;
+	int		i;
+	int		size_src;
 
+	size_src = ft_strlen(src);
+	dest = (char *)malloc(sizeof(char) * (size_src + 1));
+	if (dest == NULL)
+		return (NULL);
 	i = 0;
 	while (src[i] != '\0')
 	{
 		dest[i] = src[i];
 		i++;
 	}
-	dest[i] = src[i];
+	dest[i] = '\0';
 	return (dest);
 }
 
@@ -52,18 +58,21 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 	i = 0;
 	while (i < ac)
 	{
-		array[i].str = (char *)malloc(sizeof(char) * (ft_strlen(av[i]) + 1));
-		array[i].copy = (char *)malloc(sizeof(char) * (ft_strlen(av[i]) + 1));
-		if (array[i].str == NULL || array[i].copy == NULL)
-			return (NULL);
 		array[i].size = ft_strlen(av[i]);
-		array[i].str = ft_strcpy(array[i].str, av[i]);
-		array[i].copy = ft_strcpy(array[i].copy, av[i]);
+		array[i].str = av[i];
+		array[i].copy = ft_strdup(av[i]);
+		if (array[i].copy == NULL)
+		{
+			while (--i >= 0)
+				free(array[i].copy);
+			free(array);
+			return (NULL);
+		}
 		i++;
 	}
 	array[i].size = 0;
-	array[i].str = NULL;
-	array[i].copy = NULL;
+	array[i].str = 0;
+	array[i].copy = 0;
 	return (array);
 }
 /*void	ft_putstr(char *str)
@@ -73,7 +82,6 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 		write(1, str, 1);
 		str++;
 	}
-	write(1, "\n", 1);
 }
 
 void	ft_putnbr(int nb)
@@ -96,7 +104,6 @@ void	ft_putnbr(int nb)
 	}
 	c = '0' + (nb % 10);
 	write(1, &c, 1);
-	write(1, "\n", 1);
 }
 
 void	ft_show_tab(struct s_stock_str *par)
@@ -107,16 +114,11 @@ void	ft_show_tab(struct s_stock_str *par)
 	while (par[i].str != NULL)
 	{
 		ft_putstr(par[i].str);
+		write(1, "\n", 1);
 		ft_putnbr(par[i].size);
+		write(1, "\n", 1);
 		ft_putstr(par[i].copy);
+		write(1, "\n", 1);
 		i++;
 	}
-}
-int	main(int argc, char **argv)
-{
-	t_stock_str *str;
-
-	str = ft_strs_to_tab(argc, argv);
-	ft_show_tab(str);
-	free(str);
 }*/

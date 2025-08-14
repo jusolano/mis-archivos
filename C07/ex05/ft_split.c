@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusolano <jusolano@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: juansolano <juansolano@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 07:32:41 by jusolano          #+#    #+#             */
-/*   Updated: 2025/08/13 10:47:47 by jusolano         ###   ########.fr       */
+/*   Updated: 2025/08/14 12:50:25 by juansolano       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-//#include <stdio.h>
+#include <stdio.h>
 
 int	is_sep(char c, char *charset)
 {

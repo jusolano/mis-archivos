@@ -6,7 +6,7 @@
 /*   By: juansolano <juansolano@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 09:52:32 by jusolano          #+#    #+#             */
-/*   Updated: 2025/08/14 12:13:05 by juansolano       ###   ########.fr       */
+/*   Updated: 2025/08/14 12:46:56 by juansolano       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ int	*ft_range(int min, int max)
 		printf("%d ", range[i]);
 		i++;
 	}
+	free(range);
 	return (0);
 }*/
